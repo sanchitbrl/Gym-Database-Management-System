@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Edit' if trainer else 'Add' }} Trainer{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h3>{{ 'Edit' if trainer else 'Add' }} Trainer</h3>
+</div>
+
+<div class="table-container">
+  <form method="POST">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Full Name</label>
+        <input type="text" class="form-control" name="name" required value="{{ trainer.name if trainer else '' }}">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Specialization</label>
+        <input type="text" class="form-control" name="specialization" value="{{ trainer.specialization if trainer else '' }}">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Phone</label>
+        <input type="text" class="form-control" name="phone" value="{{ trainer.phone if trainer else '' }}">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" name="email" value="{{ trainer.email if trainer else '' }}">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Salary</label>
+        <input type="number" step="0.01" class="form-control" name="salary" value="{{ trainer.salary if trainer else '' }}">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Joining Date</label>
+        <input type="date" class="form-control" name="joining_date" value="{{ trainer.joining_date if trainer else '' }}">
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <button type="submit" class="btn btn-primary-custom">Save</button>
+      <a href="{{ url_for('trainers') }}" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

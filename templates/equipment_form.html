@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Add Equipment{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h3>Add Equipment</h3>
+</div>
+
+<div class="table-container">
+  <form method="POST">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Equipment Name</label>
+        <input type="text" class="form-control" name="name" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Category</label>
+        <input type="text" class="form-control" name="category" placeholder="Cardio, Strength, etc.">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Quantity</label>
+        <input type="number" class="form-control" name="quantity" value="1" required>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Purchase Date</label>
+        <input type="date" class="form-control" name="purchase_date">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Condition</label>
+        <select class="form-select" name="condition_status">
+          {% for c in ['New','Good','Needs Repair','Out of Service'] %}
+          <option value="{{ c }}">{{ c }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <button type="submit" class="btn btn-primary-custom">Save</button>
+      <a href="{{ url_for('equipment') }}" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

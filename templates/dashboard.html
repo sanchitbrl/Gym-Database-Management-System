@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - Gym Management{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h3>Dashboard</h3>
+</div>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-3">
+    <div class="card-stat stat-forest">
+      <p>Total Members</p>
+      <h2>{{ stats.members }}</h2>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card-stat stat-navy">
+      <p>Total Trainers</p>
+      <h2>{{ stats.trainers }}</h2>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card-stat stat-mustard">
+      <p>Total Revenue</p>
+      <h2>Rs. {{ stats.revenue }}</h2>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card-stat stat-rust">
+      <p>Equipment Items</p>
+      <h2>{{ stats.equipment }}</h2>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="table-container">
+  <h5 class="mb-3">Recent Payments</h5>
+  <table class="table table-hover align-middle">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Member</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Mode</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in recent_payments %}
+      <tr>
+        <td>{{ p.payment_id }}</td>
+        <td>{{ p.member_name }}</td>
+        <td>Rs. {{ p.amount }}</td>
+        <td>{{ p.payment_date }}</td>
+        <td><span class="badge bg-secondary">{{ p.payment_mode }}</span></td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5" class="text-center text-muted">No payments yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Edit' if member else 'Add' }} Member{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h3>{{ 'Edit' if member else 'Add' }} Member</h3>
+</div>
+
+<div class="table-container">
+  <form method="POST">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Full Name</label>
+        <input type="text" class="form-control" name="name" required value="{{ member.name if member else '' }}">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Age</label>
+        <input type="number" class="form-control" name="age" value="{{ member.age if member else '' }}">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Gender</label>
+        <select class="form-select" name="gender">
+          {% for g in ['Male','Female','Other'] %}
+          <option value="{{ g }}" {% if member and member.gender==g %}selected{% endif %}>{{ g }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Phone</label>
+        <input type="text" class="form-control" name="phone" value="{{ member.phone if member else '' }}">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" name="email" value="{{ member.email if member else '' }}">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Join Date</label>
+        <input type="date" class="form-control" name="join_date" value="{{ member.join_date if member else '' }}">
+      </div>
+      <div class="col-md-12">
+        <label class="form-label">Address</label>
+        <input type="text" class="form-control" name="address" value="{{ member.address if member else '' }}">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Membership Plan</label>
+        <select class="form-select" name="plan_id">
+          <option value="">-- Select Plan --</option>
+          {% for p in plans %}
+          <option value="{{ p.plan_id }}" {% if member and member.plan_id==p.plan_id %}selected{% endif %}>
+            {{ p.plan_name }} (Rs. {{ p.price }})
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Assigned Trainer</label>
+        <select class="form-select" name="trainer_id">
+          <option value="">-- Select Trainer --</option>
+          {% for t in trainers %}
+          <option value="{{ t.trainer_id }}" {% if member and member.trainer_id==t.trainer_id %}selected{% endif %}>
+            {{ t.name }} ({{ t.specialization }})
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <button type="submit" class="btn btn-primary-custom">Save</button>
+      <a href="{{ url_for('members') }}" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

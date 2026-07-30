@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Attendance{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h3>Attendance</h3>
+  <a href="{{ url_for('add_attendance') }}" class="btn btn-primary-custom">+ Mark Attendance</a>
+</div>
+
+<div class="table-container">
+  <table class="table table-hover align-middle">
+    <thead>
+      <tr><th>ID</th><th>Member</th><th>Date</th><th>Check-in</th><th>Check-out</th></tr>
+    </thead>
+    <tbody>
+      {% for a in attendance %}
+      <tr>
+        <td>{{ a.attendance_id }}</td>
+        <td>{{ a.member_name }}</td>
+        <td>{{ a.check_in_date }}</td>
+        <td>{{ a.check_in_time }}</td>
+        <td>{{ a.check_out_time or '—' }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5" class="text-center text-muted">No attendance records.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

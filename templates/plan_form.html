@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Add Membership Plan{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h3>Add Membership Plan</h3>
+</div>
+
+<div class="table-container">
+  <form method="POST">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Plan Name</label>
+        <input type="text" class="form-control" name="plan_name" required>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Duration (months)</label>
+        <input type="number" class="form-control" name="duration_months" required>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Price (Rs.)</label>
+        <input type="number" step="0.01" class="form-control" name="price" required>
+      </div>
+      <div class="col-md-12">
+        <label class="form-label">Description</label>
+        <textarea class="form-control" name="description" rows="2"></textarea>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <button type="submit" class="btn btn-primary-custom">Save</button>
+      <a href="{{ url_for('plans') }}" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

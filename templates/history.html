@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}History{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h3>Deletion History</h3>
+</div>
+
+<p class="text-muted small mb-3">
+  Old IDs still make sense here. When something's deleted, we save the whole record
+  before removing it, so you can still see what "member #7" or "plan #3" used to be.
+</p>
+
+<div class="filter-tabs mb-3">
+  <a href="{{ url_for('history') }}" class="filter-tab {{ 'active' if filter_type=='all' }}">All</a>
+  <a href="{{ url_for('history', type='member') }}" class="filter-tab {{ 'active' if filter_type=='member' }}">Members</a>
+  <a href="{{ url_for('history', type='trainer') }}" class="filter-tab {{ 'active' if filter_type=='trainer' }}">Trainers</a>
+  <a href="{{ url_for('history', type='plan') }}" class="filter-tab {{ 'active' if filter_type=='plan' }}">Plans</a>
+  <a href="{{ url_for('history', type='equipment') }}" class="filter-tab {{ 'active' if filter_type=='equipment' }}">Equipment</a>
+</div>
+
+<div class="history-list">
+  {% for h in history %}
+  <div class="history-card">
+    <div class="history-card-top">
+      <span class="tag tag-{{ h.entity_type }}">{{ h.entity_type }}</span>
+      <span class="history-id">was #{{ h.original_id }}</span>
+      <span class="history-date">deleted {{ h.deleted_at.strftime('%d %b %Y, %I:%M %p') }}</span>
+    </div>
+    <div class="history-fields">
+      {% for key, value in h.data.items() %}
+        {% if value is not none %}
+        <span class="field-chip"><b>{{ key }}:</b> {{ value }}</span>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {% else %}
+  <p class="text-muted text-center py-4">Nothing's been deleted yet — history is empty.</p>
+  {% endfor %}
+</div>
+
+{% endblock %}

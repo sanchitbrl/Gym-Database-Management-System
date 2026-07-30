@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Mark Attendance{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h3>Mark Attendance</h3>
+</div>
+
+<div class="table-container">
+  <form method="POST">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Member</label>
+        <select class="form-select" name="member_id" required>
+          <option value="">-- Select Member --</option>
+          {% for m in members %}
+          <option value="{{ m.member_id }}">{{ m.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Date</label>
+        <input type="date" class="form-control" name="check_in_date" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Check-in Time</label>
+        <input type="time" class="form-control" name="check_in_time" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Check-out Time (optional)</label>
+        <input type="time" class="form-control" name="check_out_time">
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <button type="submit" class="btn btn-primary-custom">Save</button>
+      <a href="{{ url_for('attendance') }}" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

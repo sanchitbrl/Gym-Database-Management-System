@@ -1,0 +1,327 @@
+/* ==========================================
+   FitZone Gym — hand-styled, not a template
+   ========================================== */
+
+:root {
+  --cream: #faf6ee;
+  --paper: #fffdf8;
+  --ink: #2e2a22;
+  --forest: #3c6e47;
+  --forest-dark: #2b5033;
+  --mustard: #e2a53a;
+  --rust: #c1502e;
+  --line: #ddd3bd;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background-color: var(--cream);
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px);
+  background-size: 100% 32px;
+  color: var(--ink);
+  font-family: 'Nunito', sans-serif;
+}
+
+h1, h2, h3, h4, .brand, .page-header h3 {
+  font-family: 'Kalam', cursive;
+  color: var(--ink);
+}
+
+/* ---------- Header / Nav ---------- */
+.site-header {
+  background: var(--paper);
+  border-bottom: 3px solid var(--ink);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.brand {
+  font-family: 'Kalam', cursive;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--forest-dark);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-right: auto;
+}
+
+.brand small {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: #8a8168;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  font-size: 1.1rem;
+  padding: 0.2rem 0.6rem;
+  cursor: pointer;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.4rem;
+}
+
+.site-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  font-size: 0.93rem;
+}
+
+.site-nav a:hover {
+  border-color: var(--ink);
+  background: #fff;
+}
+
+.site-nav a.nav-history {
+  background: var(--mustard);
+  border-color: var(--ink);
+  color: #2e2a22;
+}
+
+@media (max-width: 860px) {
+  .nav-toggle { display: block; }
+  .site-nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    padding-top: 0.5rem;
+  }
+  .site-nav.open { display: flex; }
+}
+
+/* ---------- Page layout ---------- */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px dashed var(--line);
+}
+
+.page-header h3 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary-custom {
+  background-color: var(--forest);
+  border: 2px solid var(--forest-dark);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 8px;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: transform 0.08s ease;
+}
+
+.btn-primary-custom:hover {
+  background-color: var(--forest-dark);
+  color: #fff;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.btn-outline-primary, .btn-outline-danger, .btn-outline-secondary {
+  border-width: 2px;
+  font-weight: 600;
+  border-radius: 7px;
+}
+
+/* ---------- Stat cards (dashboard) ---------- */
+.card-stat {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  padding: 1.1rem 1.3rem;
+  box-shadow: 4px 4px 0 var(--line);
+}
+
+.card-stat p {
+  margin: 0 0 0.15rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: #7c745c;
+}
+
+.card-stat h2 {
+  margin: 0;
+  font-family: 'Kalam', cursive;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.stat-forest { border-left: 6px solid var(--forest); }
+.stat-mustard { border-left: 6px solid var(--mustard); }
+.stat-rust { border-left: 6px solid var(--rust); }
+.stat-navy { border-left: 6px solid #3a5a78; }
+
+/* ---------- Tables ---------- */
+.table-container {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  padding: 1.3rem;
+  box-shadow: 4px 4px 0 var(--line);
+}
+
+.table thead th {
+  border-bottom: 2px solid var(--ink) !important;
+  font-family: 'Kalam', cursive;
+  font-size: 0.95rem;
+  color: var(--forest-dark);
+}
+
+.table td, .table th {
+  vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f4efe0;
+}
+
+/* ---------- Forms ---------- */
+.form-control, .form-select {
+  border: 2px solid var(--line);
+  border-radius: 7px;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--forest);
+  box-shadow: 0 0 0 0.15rem rgba(60, 110, 71, 0.2);
+}
+
+.form-label {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #5c5540;
+}
+
+/* ---------- Badges ---------- */
+.badge { font-weight: 600; border-radius: 6px; }
+
+/* ---------- History page ---------- */
+.filter-tabs {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  padding: 0.35rem 0.9rem;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: var(--paper);
+}
+
+.filter-tab.active {
+  background: var(--forest);
+  color: #fff;
+  border-color: var(--forest-dark);
+}
+
+.history-card {
+  background: var(--paper);
+  border: 2px dashed var(--line);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.history-card-top {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.tag {
+  font-family: 'Kalam', cursive;
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 6px;
+  text-transform: capitalize;
+  color: #fff;
+}
+
+.tag-member { background: var(--forest); }
+.tag-trainer { background: #3a5a78; }
+.tag-plan { background: var(--mustard); color: #2e2a22; }
+.tag-equipment { background: var(--rust); }
+
+.history-id {
+  font-weight: 700;
+  color: #7c745c;
+  font-size: 0.85rem;
+}
+
+.history-date {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: #9a917a;
+  font-style: italic;
+}
+
+.history-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.field-chip {
+  background: #f4efe0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.82rem;
+}
+
+.field-chip b {
+  color: var(--forest-dark);
+  font-weight: 700;
+}
+
+/* ---------- Alerts ---------- */
+.alert {
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  font-weight: 600;
+}
