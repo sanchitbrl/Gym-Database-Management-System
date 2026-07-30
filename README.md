@@ -1,4 +1,4 @@
-# FitZone Gym Management System
+# SwasthaZone Gym Management System
 
 A full-stack DBMS college project built with:
 - **Frontend:** HTML, CSS, Bootstrap 5, JavaScript
