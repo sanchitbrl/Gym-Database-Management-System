@@ -120,12 +120,4 @@ gym_management/
 
 ## Security Note
 
-`DB_CONFIG` in `app.py` holds a real database password in plaintext. That's fine for local dev on a college project, but **don't commit real credentials to a public repo** — either keep a placeholder in version control and set the real password locally only, or load it from an environment variable (`os.environ.get("DB_PASSWORD")`) instead.
-
-## Ideas for Extending (bonus marks)
-- Add login/authentication (admin vs staff roles)
-- Auto-calculate membership expiry from `join_date` + plan duration
-- Add SQL views, triggers, or stored procedures/functions for extra DBMS credit
-  (e.g., a trigger to auto-log a payment when a member is created)
-- Add charts (Chart.js) to the dashboard for revenue trends
-- Export member/payment reports to PDF or CSV
+`DB_CONFIG` in `app.py` holds a real database password in plaintext.
